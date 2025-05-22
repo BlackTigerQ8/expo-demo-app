@@ -1,4 +1,6 @@
 import CustomButton from "@/app/CustomButton";
+import UserCard from "@/app/components/UserCard";
+import { users } from "@/app/data/users";
 import React, { useState } from "react";
 import {
   FlatList,
@@ -7,8 +9,6 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import UserCard from "../../components/UserCard";
-import { users } from "../../data/users";
 
 export default function UsersScreen() {
   const [selectedLevel, setSelectedLevel] = useState<string>("all");

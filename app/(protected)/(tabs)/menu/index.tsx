@@ -1,8 +1,10 @@
 import { getAllFood } from "@/api/calls";
 import ProductCard from "@/app/components/ProductCard";
 import { Meal } from "@/app/types/foodTypes";
+import { router } from "expo-router";
 import React, { useEffect, useState } from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
+import { FAB } from "react-native-paper";
 
 const MenuScreen = () => {
   const [foodMenu, setFoodMenu] = useState<Meal[]>([]);
@@ -35,6 +37,11 @@ const MenuScreen = () => {
         )}
         contentContainerStyle={styles.listContainer}
       />
+      <FAB
+        icon="food-fork-drink"
+        style={styles.fab}
+        onPress={() => router.push("/menu/Create")}
+      />
     </View>
   );
 };
@@ -46,6 +53,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#f5f5f5",
     paddingTop: 50,
+    position: "relative",
   },
   centerContainer: {
     flex: 1,
@@ -62,10 +70,18 @@ const styles = StyleSheet.create({
   },
   listContainer: {
     padding: 10,
+    paddingBottom: 80, // Add padding at bottom to prevent FAB from covering content
   },
   errorText: {
     color: "#ff3b30",
     fontSize: 16,
     textAlign: "center",
+  },
+  fab: {
+    position: "absolute",
+    margin: 16,
+    right: 16,
+    bottom: 16,
+    zIndex: 1,
   },
 });
